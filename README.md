@@ -1,9 +1,9 @@
-# Quafu
+
 ## Introduction
-Here is the code of Quafu ,a high-performance GPU-accelerated incremental graph processing system designed for large-scale graphs.
+Here is the code of paper "Out-of-Core GPU Memory Management for Incremental Graph Processing".
 
 ## Compile
-Under the root directory of the Quafu project, execute the following commands to compile the project.
+Under the root directory of the project, execute the following commands to compile the project.
 
 ```zsh
 mkdir build && cd build
