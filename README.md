@@ -10,7 +10,7 @@ Here is the code of paper "Out-of-Core GPU Memory Management for Incremental Gra
 ## Hardware Requirements
 * Intel/AMD X64 CPUs
 * 128GB RAM (at least)
-* NVIDIA GTX 1080 or A5000
+* NVIDIA GTX A100 or A5000
 * 24GB Storage space (at least)
 
 ## Requirements and Compilation
@@ -27,11 +27,19 @@ The include/framework/ directory contains the incremental graph computation engi
 
 ## Execute Algorithms(for example pagerank)
 Execute the following commands to test the pagerank algorithm of the binary file.You can switch the binary file name to other algorithms like hybrid_sssp, hybrid_bfs,hybrid_cc.
+The executable takes the following command-line parameters:
+
+-graphfile : Graphfile is used.
+-format : Large graph which size is out of gpu memory.
+-cache : Optional parameter to specify the cache size. Default is 0.
+-updatesize : Total stream size of updatefile.
+-updatefile : The batch information file.
 
 ```zsh
 cd build
 ./hybrid_pr -graphfile {input graph path} -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size {user_stream_size} -updatefile {update graph path} -cache 0
 ```
+
 
 
 ## Input
