@@ -1,8 +1,20 @@
 
 ## Introduction
 Here is the code of paper "Out-of-Core GPU Memory Management for Incremental Graph Processing".
+## Software Requirements
+* CUDA == 11.4
+* GCC == 7.5.0
+* CMake == 3.18.5
+* Linux/Unix
 
-## Compile
+## Hardware Requirements
+* Intel/AMD X64 CPUs
+* 128GB RAM (at least)
+* NVIDIA GTX 1080 or A5000
+* 24GB Storage space (at least)
+
+## Requirements and Compilation
+
 Under the root directory of the project, execute the following commands to compile the project.
 
 ```zsh
@@ -10,6 +22,8 @@ mkdir build && cd build
 cmake ..
 make
 ```
+## Get Started
+The include/framework/ directory contains the incremental graph computation engine and static graph computation engine. The application codes (e.g., PageRank, SSSP, etc.) can be found in the samples/ directory. Useful helper files for generating graph data structures ), reading the graph inputs in the correct format ((utils/)are also provided.
 
 ## Execute Algorithms(for example pagerank)
 Execute the following commands to test the pagerank algorithm of the binary file.You can switch the binary file name to other algorithms like hybrid_sssp, hybrid_bfs,hybrid_cc.
