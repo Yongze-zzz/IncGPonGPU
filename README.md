@@ -34,7 +34,7 @@ The executable takes the following command-line parameters:
 -cache : Optional parameter to specify the cache size. Default is 0.
 -updatesize : Total stream size information of updatefile, user should provide it with the path of file.
 -updatefile : The batch information file.
-
+-SEGMENT： Number of vertex segment, to control number of edges, it should be less than total number of vertices.
 ```zsh
 cd build
 ./hybrid_pr -graphfile /root/input.txt -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size /root/stream_size.txt -updatefile /root/update.txt -cache 0
