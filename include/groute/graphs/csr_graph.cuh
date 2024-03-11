@@ -42,7 +42,7 @@
 #include "./util.h"
 #include <cstring>
 #include<iostream>
-#include <include/groute/dynamic_graph/dynamic_graph.cuh>
+//#include <include/groute/dynamic_graph/dynamic_graph.cuh>
 #define DEBUG 0
 DECLARE_int32(hybrid);
 DECLARE_int32(n_stream);
