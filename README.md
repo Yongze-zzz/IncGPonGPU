@@ -46,7 +46,7 @@ cd build
 Both the input graph and update graph are edge lists.
 Each input graph starts with 'source destination' where source is the source vertex and destination is the destination vertex of an edge. 
 Each update graph starts with 'operation source destination' where source is the source vertex and destination is the destination vertex of an edge,the operation "a" means insert edges,"d" means delete edges. 
-Each line of user stream size file contains number of graph updates which total number of line is the batch size(snapshots).
+For complete information about the "update_stream_size" file, please refer to the Stream size example below.
 
 Input Graph Example:
 
@@ -73,11 +73,12 @@ d 2 4
 d 3 4
 ```
 
-Batch Size Example:
-
+Stream Size Example:
+The following is “Stream size example” file containing two snapshots, each snapshot contains two edges inserted and two edges deleted.
 ```zsh
-2 3
+2 3 # "2" is the number of added edges, "3" is the number of deleted edges.
 2 3
 ```
+
 
 
