@@ -1453,7 +1453,7 @@ namespace sepgraph {
                     active_count_overall+=work_size;
 
                 }
-                printf("Round act node %d\n",active_count_overall);
+                //printf("Round act node %d\n",active_count_overall);
                 sw_unique.stop();
                 m_running_info.time_overhead_wl_unique += sw_unique.ms();
 
