@@ -37,18 +37,20 @@ The executable takes the following command-line parameters:
 
 ```zsh
 cd build
-./hybrid_pr -graphfile {input graph path} -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size {user_stream_size} -updatefile {update graph path} -cache 0
+./hybrid_pr -graphfile /root/input.txt -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size {user_stream_size_path} -updatefile /root/update.txt -cache 0
 ```
 
 
 
 ## Input
 Both the input graph and update graph are edge lists.
-Each input graph starts with 'source destination' where source is the source vertex and destination is the destination vertex of an edge. 
-Each update graph starts with 'operation source destination' where source is the source vertex and destination is the destination vertex of an edge,the operation "a" means insert edges,"d" means delete edges. 
-For complete information about the "update_stream_size" file, please refer to the Stream size example below.
+/root/input.txt can refer to the format of "Input Graph Example" below.
+/root/update.txt can refer to the format of "Update Graph Example" below.
+Each line of input graph starts with 'source destination' where source is the source vertex and destination is the destination vertex of an edge. 
+Each line of update graph starts with 'operation source destination' where source is the source vertex and destination is the destination vertex of an edge,the operation "a" means insert edges,"d" means delete edges. 
 
-Input Graph Example:
+
+Input Graph Example (path: /root/input.txt):
 
 ```zsh
 0 1
@@ -58,7 +60,7 @@ Input Graph Example:
 2 4
 3 4
 ```
-Update Graph Example:
+Update Graph Example(named /root/update.txt):
 
 ```zsh
 a 0 3
@@ -73,7 +75,7 @@ d 2 4
 d 3 4
 ```
 
-Stream Size Example:
+Stream Size Example (named ):
 The following is “Stream size example” file containing two snapshots, each snapshot contains two edges inserted and two edges deleted.
 ```zsh
 2 3 # "2" is the number of added edges, "3" is the number of deleted edges.
