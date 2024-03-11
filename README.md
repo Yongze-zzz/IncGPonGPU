@@ -32,12 +32,12 @@ The executable takes the following command-line parameters:
 -graphfile : Graphfile is used.
 -format : Large graph which size is out of gpu memory.
 -cache : Optional parameter to specify the cache size. Default is 0.
--updatesize : Total stream size of updatefile.
+-updatesize : Total stream size information of updatefile, user should provide it with the path of file.
 -updatefile : The batch information file.
 
 ```zsh
 cd build
-./hybrid_pr -graphfile /root/input.txt -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size {user_stream_size_path} -updatefile /root/update.txt -cache 0
+./hybrid_pr -graphfile /root/input.txt -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size /root/stream_size.txt -updatefile /root/update.txt -cache 0
 ```
 
 
@@ -48,7 +48,7 @@ Both the input graph and update graph are edge lists.
 /root/update.txt can refer to the format of "Update Graph Example" below.
 Each line of input graph starts with 'source destination' where source is the source vertex and destination is the destination vertex of an edge. 
 Each line of update graph starts with 'operation source destination' where source is the source vertex and destination is the destination vertex of an edge,the operation "a" means insert edges,"d" means delete edges. 
-
+/root/stream_size.txt can refer to the format of "Stream size example" below.
 
 Input Graph Example (path: /root/input.txt):
 
@@ -75,7 +75,7 @@ d 2 4
 d 3 4
 ```
 
-Stream Size Example (named ):
+Stream Size Example(named /root/stream_size.txt):
 The following is “Stream size example” file containing two snapshots, each snapshot contains two edges inserted and two edges deleted.
 ```zsh
 2 3 # "2" is the number of added edges, "3" is the number of deleted edges.
