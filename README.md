@@ -30,12 +30,19 @@ Execute the following commands to test the pagerank algorithm of the binary file
 The executable takes the following command-line parameters:
 
 -graphfile : Graphfile is used.
+
 -format : Large graph which size is out of gpu memory.
+
 -cache : Optional parameter to specify the cache size. Default is 0. "-cache 4" denotes 4GB cache size. "-cache 3" denotes 3GB cache size."-cache 2" denotes 2GB cache size."-cache 1" denotes 1GB cache size."-cache 0" denotes without cache policy.
+
 -updatesize : Total stream size information of updatefile, user should provide it with the path of file.
+
 -updatefile : The batch information file.
+
 -SEGMENT： Number of vertex segment, to control number of edges, it should be less than total number of vertices.
+
 -source_node: Source node id, which could be any vertex id of the graphfile.
+
 ```zsh
 cd build
 ./hybrid_pr -graphfile /root/input.txt -format market_big -hybrid 0 -SEGMENT 512 -weight_num 1 -weight 1 -update_size /root/stream_size.txt -updatefile /root/update.txt -cache 0
