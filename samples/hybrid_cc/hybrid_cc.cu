@@ -102,13 +102,19 @@ namespace hybrid_cc
                              TBuffer *p_buffer,    //dst_buffer
                              TBuffer buffer) override   //src_buffer
         {
-            TBuffer old_buffer = atomicMin(p_buffer, buffer + 0);
-            if((buffer + 0) < old_buffer){
-                *p_parent  = src;
+            // TBuffer old_buffer = *p_buffer;
+            TBuffer new_buffer = buffer + weight;
+            TBuffer old_buffer=atomicMin(p_buffer, buffer + weight);;
+            if(new_buffer< old_buffer){
+            
+                TValue old_parent = *p_parent;
+                do{
+                    old_parent = atomicCAS(p_parent,old_parent,src);
+                    
+                } while (new_buffer==*p_buffer && (*p_parent) !=src);
             }
             return 1;
-        } 
-
+        }
         __forceinline__ __device__
         int AccumulateBuffer_add(index_t src,
                              index_t dst,
@@ -123,18 +129,21 @@ namespace hybrid_cc
             if(incoming_value_curr ==UINT32_MAX){
                 return 0;
             }
-            TValue new_buffer;
-            new_buffer = incoming_value_curr + 0;
+            TValue new_buffer = incoming_value_curr + weight;
             TValue new_parent = src;
             // TValue new_level = level+1;
             TValue old_value;
             old_value = atomicMin(p_buffer, new_buffer);
-            if(new_buffer < old_value){
-                *p_parent  = new_parent;
-            }
+            TValue old_parent = *p_parent;
+        // TValue curr_buffer = *p_buffer;
+            // if(new_buffer == curr_buffer){
+            do{
+                if(new_buffer==old_value){
+                    old_parent = atomicCAS(p_parent,old_parent,src);
+                }
+            } while (new_buffer==old_value && old_parent !=src);
             return 1;
         }
-
         __forceinline__ __device__
         int AccumulateBuffer_del(index_t src,
                              index_t dst,
